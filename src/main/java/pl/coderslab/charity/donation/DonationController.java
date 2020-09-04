@@ -15,13 +15,11 @@ public class DonationController {
 
     private final DonationService donationService;
 
-    @GetMapping("/donations/sum")
+    @GetMapping("/donations/")
     public ResponseEntity QuantitySum() {
-        return ResponseEntity.ok(donationService.allQuantity());
-    }
-
-    @GetMapping("/donations/count")
-    public ResponseEntity DonationCount() {
         return ResponseEntity.ok(donationService.allDonation());
     }
+
 }
+
+

@@ -8,20 +8,12 @@ import org.springframework.stereotype.Service;
 public class DonationService {
 
     private final DonationRepository donationRepository;
+    private final DonationsAll donationsAll;
 
-    public Integer allQuantity() {
-        Integer allQuantity = donationRepository.findAll()
-                .stream()
-                .mapToInt(q -> q.getQuantity())
-                .sum();
-        return allQuantity;
-    }
-
-    public Long allDonation() {
-        Long allDonation = donationRepository.findAll()
-                .stream()
-                .count();
-        return allDonation;
+    public DonationsAll allDonation() {
+        donationsAll.setSum(donationRepository.donationsSum());
+        donationsAll.setCount(donationRepository.donationsCount());
+        return donationsAll;
     }
 
 }
