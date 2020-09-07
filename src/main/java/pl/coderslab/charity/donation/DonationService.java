@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 public class DonationService {
 
     private final DonationRepository donationRepository;
-    private final DonationsAll donationsAll;
 
     public DonationsAll allDonation() {
+        DonationsAll donationsAll = new DonationsAll();
         donationsAll.setSum(donationRepository.donationsSum());
         donationsAll.setCount(donationRepository.donationsCount());
         return donationsAll;
