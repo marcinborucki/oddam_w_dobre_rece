@@ -1,11 +1,9 @@
 package pl.coderslab.charity.donation;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +16,12 @@ public class DonationController {
     @GetMapping("/donations/")
     public ResponseEntity QuantitySum() {
         return ResponseEntity.ok(donationService.allDonation());
+    }
+
+    @PostMapping("/donation/add")
+    public ResponseEntity AddDonation(@RequestBody CreateDonationDto createDonationDto) {
+        donationService.createDonation(createDonationDto);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }
