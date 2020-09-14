@@ -23,8 +23,6 @@ public class DonationController {
         return ResponseEntity.ok(donationService.findById(id));
     }
 
-
-
     @PostMapping("/donation/")
     public ResponseEntity addDonation(@RequestBody CreateDonationDto createDonationDto) {
         donationService.createDonation(createDonationDto);

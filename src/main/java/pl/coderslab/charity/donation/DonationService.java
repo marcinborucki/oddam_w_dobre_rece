@@ -4,9 +4,12 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.category.Category;
+import pl.coderslab.charity.category.CategoryRespository;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +19,7 @@ public class DonationService {
     private final DonationRepository donationRepository;
     private final InstitutionRepository institutionRepository;
     private final ModelMapper modelMapper;
+    private final CategoryRespository categoryRespository;
 
     public DonationsAll allDonation() {
         DonationsAll donationsAll = new DonationsAll();
@@ -37,6 +41,9 @@ public class DonationService {
     public Donation donationBuilder(CreateDonationDto createDonationDto) {
         Institution institution = institutionRepository.findById(createDonationDto.getInstitutionId())
                 .orElseThrow(RuntimeException::new);
+
+        List<Category> categoryList = categoryRespository.findAllById(createDonationDto.getCategoriesId());
+
         Donation donation = Donation.builder()
                 .institution(institution)
                 .city(createDonationDto.getCity())
@@ -47,6 +54,7 @@ public class DonationService {
                 .pickUpDate(createDonationDto.getPickUpDate())
                 .street(createDonationDto.getStreet())
                 .zipCode(createDonationDto.getZipCode())
+                .categories(categoryList)
                 .build();
         return donation;
     }

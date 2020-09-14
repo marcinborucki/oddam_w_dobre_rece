@@ -17,7 +17,7 @@ public class CreateDonationDto {
 
     private Integer quantity;
 
-    private List<Category> categories;
+    private List<Long> categoriesId;
 
     private Long institutionId;
 

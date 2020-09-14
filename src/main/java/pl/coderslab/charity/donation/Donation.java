@@ -1,8 +1,6 @@
 package pl.coderslab.charity.donation;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institution.Institution;
 
@@ -12,9 +10,11 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Data
 @Builder
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Donation {
 
     @Id
