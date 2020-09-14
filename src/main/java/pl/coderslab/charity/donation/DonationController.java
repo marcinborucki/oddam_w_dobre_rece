@@ -14,12 +14,19 @@ public class DonationController {
     private final DonationService donationService;
 
     @GetMapping("/donations/")
-    public ResponseEntity QuantitySum() {
+    public ResponseEntity quantitySum() {
         return ResponseEntity.ok(donationService.allDonation());
     }
 
-    @PostMapping("/donation/add")
-    public ResponseEntity AddDonation(@RequestBody CreateDonationDto createDonationDto) {
+    @GetMapping("/donation/{id}")
+    public ResponseEntity findByIdDonation(@PathVariable Long id) {
+        return ResponseEntity.ok(donationService.findById(id));
+    }
+
+
+
+    @PostMapping("/donation/")
+    public ResponseEntity addDonation(@RequestBody CreateDonationDto createDonationDto) {
         donationService.createDonation(createDonationDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }

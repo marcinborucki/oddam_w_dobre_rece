@@ -1,5 +1,6 @@
 package pl.coderslab.charity.donation;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.coderslab.charity.category.Category;
@@ -12,12 +13,13 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+@Builder
+
 public class Donation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private Integer quantity;
 
@@ -38,5 +40,8 @@ public class Donation {
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+    private String phoneNumber;
+
 
 }

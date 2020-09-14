@@ -19,7 +19,7 @@ public class CreateDonationDto {
 
     private List<Category> categories;
 
-    private Institution institution;
+    private Long institutionId;
 
     private String street;
 
@@ -32,6 +32,8 @@ public class CreateDonationDto {
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+    private String phoneNumber;
 
 }
 
